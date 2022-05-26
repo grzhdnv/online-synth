@@ -1,4 +1,5 @@
 import Piano from './components/Piano'
+import './App.css'
 
 function App() {
   return (

@@ -8,10 +8,11 @@ const naturalNotesFlats = ['D', 'E', 'G', 'A', 'B']
 const range = ['C5', 'A6']
 
 const app = {
+  // adds white keys, black keys,
   setupPiano() {
     const piano = document.getElementById('piano') // get #piano html element
     const allNaturalNotes = this.getAllNaturalNotes(range)
-    const pianoWidth = /* allNaturalNotes.length */ 22 * whiteKeyWidth
+    const pianoWidth = allNaturalNotes.length * whiteKeyWidth
 
     const SVG = this.createMainSVG(pianoWidth, pianoHeight)
 

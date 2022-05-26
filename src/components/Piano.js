@@ -1,5 +1,6 @@
 import React from 'react'
 import playSynth from '../utils/tone'
+import KeyboardSVG from './KeyboardSVG'
 
 const Piano = () => {
   return (
@@ -8,7 +9,8 @@ const Piano = () => {
       <button type="button" onClick={() => playSynth()}>
         Play
       </button>
-      <div id="piano"></div>
+      <KeyboardSVG />
+      <div id="piano">End</div>
     </>
   )
 }
