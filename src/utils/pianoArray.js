@@ -5,7 +5,12 @@ export function createPianoKeyboardArray(startingKey, endingKey) {
   return pianoKeys
 }
 
-export function countWhiteKeys(keyboardArray) {
+export function createWhiteKeysArray(keyboardArray) {
   const whiteKeysArray = keyboardArray.filter(key => key.length === 2)
-  return whiteKeysArray.length
+  /*   keyboardArray.forEach((key, i) => {
+    if (key.length === 2) {
+      whiteKeysArray.push([key, i])
+    }
+  }) */
+  return whiteKeysArray
 }

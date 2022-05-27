@@ -1,3 +1,11 @@
 .keyboard {
   border: 2px solid black;
 }
+
+.keyboard p {
+  font-size: 12px;
+}
+
+.black-key {
+  z-index: 20;
+}

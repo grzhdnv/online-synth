@@ -1,25 +1,37 @@
 import React from 'react'
 import BlackKey from './BlackKey'
 import WhiteKey from './WhiteKey'
-import { createPianoKeyboardArray, countWhiteKeys } from '../utils/pianoArray'
+import { createPianoKeyboardArray, createWhiteKeysArray } from '../utils/pianoArray'
 
 const KeyboardSVG = () => {
   const width = 80
   const height = 400
   const pianoKeys = createPianoKeyboardArray('A0', 'C8')
-  const pianoWidth = countWhiteKeys(pianoKeys) * width
-  // const whiteKeys = pianoKeys.filter(key => key.length === 2)
-  // const blackKeys = pianoKeys.filter(key => key.length === 3)
-  let keysSVG = pianoKeys.map((key, i) =>
-    key.length === 2 ? (
-      <WhiteKey width={width} height={height} x={width * i} />
-    ) : (
-      <BlackKey width={width / 1.8} height={height / 1.4} x={width * i - width / 1.8 / 2} />
-    )
-  )
+  const whiteKeys = createWhiteKeysArray(pianoKeys)
+  const pianoWidth = whiteKeys.length * width
+
+  const blackKeyWidth = width / 2
+  const blackKeyHeight = height / 1.4
+  let blackKeyPosX = 0 - blackKeyWidth / 2
+
+  let blackKeysSVG = []
+  whiteKeys.forEach(key => {
+    if (whiteKeys.indexOf(key) === whiteKeys.length - 1) {
+      return
+    }
+
+    if (key[0] === 'E' || key[0] === 'B') {
+      blackKeyPosX += width
+    } else {
+      blackKeyPosX += width
+      blackKeysSVG.push([key, blackKeyPosX])
+    }
+  })
 
   return (
-    <div className="keyboard" style={{ padding: '0px' }}>
+    <div className="keyboard">
+      <p>{whiteKeys}</p>
+
       <svg
         style={{ margin: '0px' }}
         viewBox={`0 0 ${pianoWidth} ${height}`}
@@ -27,11 +39,28 @@ const KeyboardSVG = () => {
         xmlns="<http://www.w3.org/2000/svg>"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
-        {keysSVG}
-
-        {/*         <WhiteKey width={width} height={height} />
-        <BlackKey width={width / 1.8} height={height / 1.4} /> */}
+        {whiteKeys.map(key => (
+          <WhiteKey
+            className="white-key"
+            id={key}
+            key={key}
+            width={width}
+            height={height}
+            x={width * whiteKeys.indexOf(key)}
+          />
+        ))}
+        {blackKeysSVG.map(([key, x]) => (
+          <BlackKey
+            className="black-key"
+            id={key + '#'}
+            key={key + '#'}
+            width={blackKeyWidth}
+            height={blackKeyHeight}
+            x={x}
+          />
+        ))}
       </svg>
+      {pianoKeys.length}
     </div>
   )
 }
