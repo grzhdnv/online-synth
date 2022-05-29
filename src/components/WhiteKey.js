@@ -10,9 +10,10 @@ const WhiteKey = props => {
       width={props.width}
       height={props.height}
       x={props.x}
-      rx="10"
+      rx="12"
       onMouseDown={() => setActive(true)}
       onMouseUp={() => setActive(false)}
+      onMouseLeave={() => setActive(false)}
     ></rect>
   )
 }

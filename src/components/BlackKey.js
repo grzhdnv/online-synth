@@ -13,6 +13,7 @@ const BlackKey = props => {
       rx="10"
       onMouseDown={() => setActive(true)}
       onMouseUp={() => setActive(false)}
+      onMouseLeave={() => setActive(false)}
     ></rect>
   )
 }
