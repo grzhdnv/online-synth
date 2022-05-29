@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const WhiteKey = props => {
+  const [active, setActive] = useState(false)
+
   return (
     <rect
-      className="white-key"
+      className={active ? 'white-key active' : 'white-key'}
       id={props.id}
       width={props.width}
       height={props.height}
       x={props.x}
       rx="10"
-      style={{ stroke: '#555555', fill: '#fffff7' }}
+      onMouseDown={() => setActive(true)}
+      onMouseUp={() => setActive(false)}
     ></rect>
   )
 }

@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const BlackKey = props => {
+  const [active, setActive] = useState(false)
+
   return (
     <rect
-      className="black-key"
+      className={active ? 'black-key active' : 'black-key'}
       id={props.id}
       width={props.width}
       height={props.height}
       x={props.x}
       rx="10"
-      style={{ stroke: '#979797', fill: '#4b4b4b' }}
+      onMouseDown={() => setActive(true)}
+      onMouseUp={() => setActive(false)}
     ></rect>
   )
 }
