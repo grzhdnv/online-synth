@@ -41,7 +41,6 @@ const KeyboardSVG = () => {
       >
         {whiteKeys.map(key => (
           <WhiteKey
-            className="white-key"
             id={key}
             key={key}
             width={width}
@@ -51,7 +50,6 @@ const KeyboardSVG = () => {
         ))}
         {blackKeysSVG.map(([key, x]) => (
           <BlackKey
-            className="black-key"
             id={key + '#'}
             key={key + '#'}
             width={blackKeyWidth}

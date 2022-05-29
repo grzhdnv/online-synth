@@ -3,7 +3,8 @@ import React from 'react'
 const BlackKey = props => {
   return (
     <rect
-      className="white-key"
+      className="black-key"
+      id={props.id}
       width={props.width}
       height={props.height}
       x={props.x}

@@ -4,6 +4,7 @@ const WhiteKey = props => {
   return (
     <rect
       className="white-key"
+      id={props.id}
       width={props.width}
       height={props.height}
       x={props.x}
