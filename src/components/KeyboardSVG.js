@@ -6,7 +6,7 @@ import { createPianoKeyboardArray, createWhiteKeysArray } from '../utils/pianoAr
 const KeyboardSVG = () => {
   const width = 80
   const height = 400
-  const pianoKeys = createPianoKeyboardArray('A0', 'C8')
+  const pianoKeys = createPianoKeyboardArray('F1', 'C7')
   const whiteKeys = createWhiteKeysArray(pianoKeys)
   const pianoWidth = whiteKeys.length * width
 
@@ -30,10 +30,8 @@ const KeyboardSVG = () => {
 
   return (
     <div className="keyboard">
-      <p>{whiteKeys}</p>
-
       <svg
-        style={{ margin: '0px' }}
+        style={{ clipPath: 'inset(5px 0px 0px 0px)', marginTop: '-5px' }}
         viewBox={`0 0 ${pianoWidth} ${height}`}
         width="100%"
         xmlns="<http://www.w3.org/2000/svg>"

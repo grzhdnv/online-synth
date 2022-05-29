@@ -1,5 +1,5 @@
 .keyboard {
-  border: 2px solid black;
+  border: 1px solid black;
 }
 
 .keyboard p {
@@ -17,10 +17,12 @@
 }
 
 .white-key.active {
+  stroke-width: 2px;
   fill: aquamarine;
 }
 
 .black-key.active {
+  stroke-width: 2px;
   stroke: #2f2f2f;
   fill: teal;
 }
