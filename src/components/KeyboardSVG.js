@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BlackKey from './BlackKey'
 import WhiteKey from './WhiteKey'
 import { createPianoKeyboardArray, createWhiteKeysArray } from '../utils/pianoArray'
 
 const KeyboardSVG = () => {
+  const [gliss, setGliss] = useState(false)
+
   const width = 80
   const height = 400
   const pianoKeys = createPianoKeyboardArray('F1', 'C7')
@@ -31,28 +33,31 @@ const KeyboardSVG = () => {
   return (
     <div className="keyboard">
       <svg
-        style={{ clipPath: 'inset(5px 0px 0px 0px)', marginTop: '-5px' }}
         viewBox={`0 0 ${pianoWidth} ${height}`}
         width="100%"
         xmlns="<http://www.w3.org/2000/svg>"
         xmlnsXlink="http://www.w3.org/1999/xlink"
+        onMouseDown={() => setGliss(true)}
+        onMouseUp={() => setGliss(false)}
       >
         {whiteKeys.map(key => (
           <WhiteKey
-            id={key}
+            data={key}
             key={key}
             width={width}
             height={height}
             x={width * whiteKeys.indexOf(key)}
+            gliss={gliss}
           />
         ))}
         {blackKeysSVG.map(([key, x]) => (
           <BlackKey
-            id={key + '#'}
+            data={key + '#'}
             key={key + '#'}
             width={blackKeyWidth}
             height={blackKeyHeight}
             x={x}
+            gliss={gliss}
           />
         ))}
       </svg>

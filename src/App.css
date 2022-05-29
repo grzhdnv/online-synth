@@ -6,6 +6,11 @@
   font-size: 12px;
 }
 
+svg {
+  clip-path: inset(5px 0px 0px 0px);
+  margin-top: -5px;
+}
+
 .white-key {
   stroke: #555555;
   fill: #fffff7;
