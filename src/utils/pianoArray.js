@@ -7,10 +7,5 @@ export function createPianoKeyboardArray(startingKey, endingKey) {
 
 export function createWhiteKeysArray(keyboardArray) {
   const whiteKeysArray = keyboardArray.filter(key => key.length === 2)
-  /*   keyboardArray.forEach((key, i) => {
-    if (key.length === 2) {
-      whiteKeysArray.push([key, i])
-    }
-  }) */
   return whiteKeysArray
 }

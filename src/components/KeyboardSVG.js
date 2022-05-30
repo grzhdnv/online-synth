@@ -52,8 +52,8 @@ const KeyboardSVG = () => {
         ))}
         {blackKeysSVG.map(([key, x]) => (
           <BlackKey
-            data={key + '#'}
-            key={key + '#'}
+            data={key[0] + '#' + key[1]}
+            key={key[0] + '#' + key[1]}
             width={blackKeyWidth}
             height={blackKeyHeight}
             x={x}

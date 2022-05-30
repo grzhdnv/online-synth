@@ -10,7 +10,6 @@ const Piano = () => {
         Play
       </button>
       <KeyboardSVG />
-      <div id="piano">End</div>
     </>
   )
 }

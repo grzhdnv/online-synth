@@ -1,5 +1,10 @@
+body {
+  user-select: none;
+}
+
 .keyboard {
   border: 1px solid black;
+  touch-action: none;
 }
 
 .keyboard p {

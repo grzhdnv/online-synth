@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
+import playSynth from '../utils/tone'
 
 const BlackKey = props => {
   const [active, setActive] = useState(false)
 
-  const handleMouseEnter = e => {
+  const handlePointerDown = e => {
+    setActive(true)
+    playSynth(props.data)
+    console.log(props.data)
+  }
+
+  const handlePointerEnter = e => {
     if (props.gliss) {
       setActive(true)
+      playSynth(props.data)
     }
   }
 
@@ -17,10 +25,10 @@ const BlackKey = props => {
       height={props.height}
       x={props.x}
       rx="10"
-      onMouseDown={() => setActive(true)}
-      onMouseUp={() => setActive(false)}
-      onMouseEnter={() => handleMouseEnter()}
-      onMouseLeave={() => setActive(false)}
+      onPointerDown={() => handlePointerDown()}
+      onPointerUp={() => setActive(false)}
+      onPointerEnter={() => handlePointerEnter()}
+      onPointerLeave={() => setActive(false)}
     ></rect>
   )
 }
