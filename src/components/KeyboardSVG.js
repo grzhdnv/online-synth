@@ -6,10 +6,10 @@ import { createPianoKeyboardArray, createWhiteKeysArray } from '../utils/pianoAr
 const KeyboardSVG = () => {
   const [gliss, setGliss] = useState(false)
 
+  const pianoKeys = createPianoKeyboardArray('C3', 'C5')
+  const whiteKeys = createWhiteKeysArray(pianoKeys)
   const width = 80
   const height = 400
-  const pianoKeys = createPianoKeyboardArray('F1', 'C7')
-  const whiteKeys = createWhiteKeysArray(pianoKeys)
   const pianoWidth = whiteKeys.length * width
 
   const blackKeyWidth = width / 2
