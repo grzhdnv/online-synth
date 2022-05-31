@@ -7,7 +7,6 @@ const BlackKey = props => {
   const handlePointerDown = e => {
     setActive(true)
     playSynth(props.data)
-    console.log(props.data)
   }
 
   const handlePointerEnter = e => {

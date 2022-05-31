@@ -12,7 +12,7 @@ const KeyboardSVG = () => {
   const height = 400
   const pianoWidth = whiteKeys.length * width
 
-  const blackKeyWidth = width / 2
+  const blackKeyWidth = width / 1.8
   const blackKeyHeight = height / 1.4
   let blackKeyPosX = 0 - blackKeyWidth / 2
 
@@ -37,8 +37,8 @@ const KeyboardSVG = () => {
         width="100%"
         xmlns="<http://www.w3.org/2000/svg>"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        onMouseDown={() => setGliss(true)}
-        onMouseUp={() => setGliss(false)}
+        onPointerDown={() => setGliss(true)}
+        onPointerUp={() => setGliss(false)}
       >
         {whiteKeys.map(key => (
           <WhiteKey
