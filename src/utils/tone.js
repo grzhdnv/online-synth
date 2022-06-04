@@ -1,7 +1,7 @@
 import * as Tone from 'tone'
 
 const synth = new Tone.PolySynth(Tone.AMSynth).toDestination()
-/* synth.set({
+synth.set({
   harmonicity: 2,
   oscillator: {
     type: 'amsine2',
@@ -26,7 +26,7 @@ const synth = new Tone.PolySynth(Tone.AMSynth).toDestination()
     sustain: 0.2,
     release: 0.4
   }
-}) */
+})
 
 function playSynth(note) {
   synth.triggerAttackRelease(note, '4n')

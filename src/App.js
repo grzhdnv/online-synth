@@ -3,7 +3,7 @@ import './App.css'
 import { useEffect } from 'react'
 import playSynth from './utils/tone'
 
-const keyboardButtons = {
+const keyboardBayan = {
   q: 'C3',
   a: 'C#3',
   z: 'D3',
@@ -41,9 +41,10 @@ const keyboardButtons = {
 const handleKeyDown = e => {
   if (e.repeat) return
   const key = e.key
-  const keyElement = document.querySelector(`[data-key='${keyboardButtons[key]}']`)
+  console.log(key)
+  const keyElement = document.querySelector(`[data-key='${keyboardBayan[key]}']`)
 
-  playSynth(keyboardButtons[key])
+  playSynth(keyboardBayan[key])
   if (keyElement) {
     keyElement.classList.add('active')
   }
@@ -51,7 +52,7 @@ const handleKeyDown = e => {
 
 const handleKeyUp = e => {
   const key = e.key
-  const keyElement = document.querySelector(`[data-key='${keyboardButtons[key]}']`)
+  const keyElement = document.querySelector(`[data-key='${keyboardBayan[key]}']`)
   if (keyElement) {
     keyElement.classList.remove('active')
   }
@@ -59,14 +60,24 @@ const handleKeyUp = e => {
 
 function App() {
   useEffect(() => {
+    console.log('adding effects')
     window.addEventListener('keydown', handleKeyDown)
     window.addEventListener('keyup', handleKeyUp)
-  }, [])
+    return () => {
+      console.log('removing effect')
+      window.removeEventListener('keydown', handleKeyDown)
+      window.addEventListener('keyup', handleKeyUp)
+    }
+  })
 
   return (
     <>
-      <div className="App">Keyboard Synth</div>
+      <div className="App">board Synth</div>
       <Piano />
+      <div id="bugs">
+        <h3>Known bugs:</h3>
+        <li>Second keydown effect fires for the second key when two keys played legato</li>
+      </div>
     </>
   )
 }
