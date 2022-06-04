@@ -2,6 +2,11 @@ body {
   user-select: none;
 }
 
+#slider {
+  background-color: #2f2f2f;
+  margin: 0 auto;
+}
+
 .keyboard {
   border: 1px solid black;
 }
@@ -37,9 +42,20 @@ svg {
   fill: teal;
 }
 
-#bugs {
-  margin-top: 50px;
+#todo {
+  border: solid 1px #2f2f2f;
+  font-size: 14px;
+  margin: 10px 80px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+}
+
+ul {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+h3 {
+  margin: 0px;
 }

@@ -72,11 +72,25 @@ function App() {
 
   return (
     <>
-      <div className="App">board Synth</div>
+      <div className="App">Keyboard Synth</div>
       <Piano />
-      <div id="bugs">
-        <h3>Known bugs:</h3>
-        <li>Second keydown effect fires for the second key when two keys played legato</li>
+      <div id="todo">
+        <ul>
+          <h3>TODO:</h3>
+          <li>Keyboard range selection</li>
+          <li>Piano keys layout</li>
+          <li>Chord display</li>
+          <li>Temperament selection</li>
+          <li>Synth selection</li>
+          <li>Keyboard scroll</li>
+          <li>Shift octave change</li>
+          <li>Notes engraving</li>
+        </ul>
+        <ul>
+          <h3>Known bugs:</h3>
+          <li>Second keydown effect fires for the second key when two keys played legato</li>
+          <li>Mobile select on long tap</li>
+        </ul>
       </div>
     </>
   )
