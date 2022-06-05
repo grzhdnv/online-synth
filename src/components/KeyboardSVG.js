@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 import { createPianoKeyboardArray, createWhiteKeysArray } from '../utils/pianoArray'
 import BlackKey from './BlackKey'
 import WhiteKey from './WhiteKey'
-// import { pianoKeys, whiteKeys } from '../utils/pianoArray'
 
-const KeyboardSVG = () => {
+const KeyboardSVG = props => {
   const [gliss, setGliss] = useState(false)
 
   const pianoKeys = createPianoKeyboardArray()
-  const whiteKeys = createWhiteKeysArray(pianoKeys)
+  const whiteKeys = createWhiteKeysArray()
 
   const width = 80
   const height = 400
@@ -63,7 +62,7 @@ const KeyboardSVG = () => {
           />
         ))}
       </svg>
-      {`Piano range: ${pianoKeys.length} keys` + whiteKeys.length}
+      {`Piano range: ${pianoKeys.length} keys`}
       <div></div>
     </div>
   )

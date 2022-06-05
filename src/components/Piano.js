@@ -33,7 +33,7 @@ const Piano = () => {
       </Box>
       <div>Piano</div>
 
-      <KeyboardSVG />
+      <KeyboardSVG range={range} />
     </>
   )
 }
