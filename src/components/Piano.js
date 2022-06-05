@@ -5,7 +5,7 @@ import KeyboardSVG from './KeyboardSVG'
 import { whiteKeys } from '../utils/pianoArray'
 
 const Piano = () => {
-  const [range, setRange] = useState([4, 50])
+  const [range, setRange] = useState([9, 37])
 
   const valueMap = { ...whiteKeys }
   const marks = []
@@ -15,9 +15,11 @@ const Piano = () => {
     }
   })
 
+  const labelRange = [valueMap[range[0]], valueMap[range[1]]]
+
   return (
     <>
-      <Box style={{ width: '90%', margin: '0 auto' }}>
+      <Box style={{ width: '90%', margin: '50px auto' }}>
         <RangeSlider
           color="gray"
           size="sm"
@@ -31,9 +33,8 @@ const Piano = () => {
           marks={marks}
         />
       </Box>
-      <div>Piano</div>
-
-      <KeyboardSVG range={range} />
+      <KeyboardSVG range={labelRange} />
+      <div>{labelRange}</div>
     </>
   )
 }

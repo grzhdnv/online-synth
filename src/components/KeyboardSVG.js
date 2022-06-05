@@ -3,11 +3,11 @@ import { createPianoKeyboardArray, createWhiteKeysArray } from '../utils/pianoAr
 import BlackKey from './BlackKey'
 import WhiteKey from './WhiteKey'
 
-const KeyboardSVG = props => {
+const KeyboardSVG = ({ range }) => {
   const [gliss, setGliss] = useState(false)
 
-  const pianoKeys = createPianoKeyboardArray()
-  const whiteKeys = createWhiteKeysArray()
+  const pianoKeys = createPianoKeyboardArray(range[0], range[1])
+  const whiteKeys = createWhiteKeysArray(pianoKeys)
 
   const width = 80
   const height = 400
