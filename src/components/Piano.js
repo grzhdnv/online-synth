@@ -22,7 +22,7 @@ const Piano = () => {
 
   return (
     <>
-      <Box style={{ width: '90%', margin: '50px auto' }}>
+      <Box style={{ width: '90%', margin: '20px auto' }}>
         <RangeSlider
           color="gray"
           size="sm"
@@ -35,6 +35,7 @@ const Piano = () => {
           onChange={setRange}
           marks={marks}
         />
+        <h1 id="chords">Chord:</h1>
       </Box>
       <KeyboardSVG startKey={startKey} endKey={endKey} />
       <div>{startKey + endKey}</div>
