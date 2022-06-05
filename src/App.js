@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Piano from './components/Piano'
 import playSynth from './utils/tone'
-import { keyboardBayan } from './utils/keyboardLayouts'
+import { bayanLayout } from './utils/keyboardLayouts'
+import { fullKeyboard } from './utils/pianoArray'
 
 function App() {
   const [pressedKeys, setPressedKeys] = useState([])
@@ -11,11 +12,13 @@ function App() {
     if (e.repeat) return
 
     const key = e.key
-    const keyElement = document.querySelector(`[data-key='${keyboardBayan[key]}']`)
-    // add check if key is bound to note
-    setPressedKeys(prevState => [...prevState, keyboardBayan[key]])
+    const keyElement = document.querySelector(`[data-key='${bayanLayout[key]}']`)
 
-    playSynth(keyboardBayan[key])
+    if (bayanLayout[key]) {
+      setPressedKeys(prevState => [...prevState, bayanLayout[key]])
+    }
+
+    playSynth(bayanLayout[key])
     if (keyElement) {
       keyElement.classList.add('active')
     }
@@ -23,7 +26,17 @@ function App() {
 
   const handleKeyUp = e => {
     const key = e.key
-    const keyElement = document.querySelector(`[data-key='${keyboardBayan[key]}']`)
+    const keyElement = document.querySelector(`[data-key='${bayanLayout[key]}']`)
+
+    const button = bayanLayout[key]
+    if (pressedKeys.includes(button)) {
+      const index = pressedKeys.indexOf(button)
+      setPressedKeys(prevState => [
+        ...prevState.slice(0, index),
+        ...prevState.slice(index + 1, prevState.length)
+      ])
+    }
+
     if (keyElement) {
       keyElement.classList.remove('active')
     }
@@ -38,12 +51,13 @@ function App() {
     }
   })
 
-  const chord = pressedKeys.join(' - ')
+  const chord = pressedKeys
+    .sort((a, b) => fullKeyboard.indexOf(a) - fullKeyboard.indexOf(b))
+    .join(' - ')
 
   return (
     <>
       <div className="App">
-        Keyboard Synth
         <Piano chord={chord} />
         <div id="todo">
           <ul>

@@ -29,7 +29,7 @@ synth.set({
 })
 
 function playSynth(note) {
-  synth.triggerAttackRelease(note, '4n')
+  synth.triggerAttackRelease(note, '8n')
 }
 
 export default playSynth

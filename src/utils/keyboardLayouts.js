@@ -1,4 +1,4 @@
-export const keyboardBayan = {
+export const bayanLayout = {
   q: 'C3',
   a: 'C#3',
   z: 'D3',
@@ -32,3 +32,7 @@ export const keyboardBayan = {
   '[': 'F#5',
   "'": 'G5'
 }
+
+export const pianoLayout = {}
+
+export const ukuleleLayout = {}
