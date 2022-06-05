@@ -40,7 +40,7 @@ function App() {
       <div id="todo">
         <ul>
           <h3>TODO:</h3>
-          <li>Keyboard range slider</li>
+          {/* <li>Keyboard range slider</li> */}
           <li>Piano keys layout</li>
           <li>Chord display</li>
           <li>Temperament selection</li>
