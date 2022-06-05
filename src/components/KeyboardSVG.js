@@ -3,21 +3,20 @@ import { createPianoKeyboardArray, createWhiteKeysArray } from '../utils/pianoAr
 import BlackKey from './BlackKey'
 import WhiteKey from './WhiteKey'
 
-const KeyboardSVG = ({ range }) => {
+const KeyboardSVG = ({ startKey, endKey }) => {
   const [gliss, setGliss] = useState(false)
 
-  const pianoKeys = createPianoKeyboardArray(range[0], range[1])
+  const pianoKeys = createPianoKeyboardArray(startKey, endKey)
   const whiteKeys = createWhiteKeysArray(pianoKeys)
 
   const width = 80
   const height = 400
   const pianoWidth = whiteKeys.length * width
-
   const blackKeyWidth = width / 1.8
   const blackKeyHeight = height / 1.4
   let blackKeyPosX = 0 - blackKeyWidth / 2
 
-  let blackKeysSVG = []
+  let blackKeys = []
   whiteKeys.forEach(key => {
     if (whiteKeys.indexOf(key) === whiteKeys.length - 1) {
       return
@@ -27,7 +26,7 @@ const KeyboardSVG = ({ range }) => {
       blackKeyPosX += width
     } else {
       blackKeyPosX += width
-      blackKeysSVG.push([key, blackKeyPosX])
+      blackKeys.push([key, blackKeyPosX])
     }
   })
 
@@ -51,7 +50,7 @@ const KeyboardSVG = ({ range }) => {
             gliss={gliss}
           />
         ))}
-        {blackKeysSVG.map(([key, x]) => (
+        {blackKeys.map(([key, x]) => (
           <BlackKey
             data={key[0] + '#' + key[1]}
             key={key[0] + '#' + key[1]}
