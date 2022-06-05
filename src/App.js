@@ -1,14 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Piano from './components/Piano'
 import playSynth from './utils/tone'
 import { keyboardBayan } from './utils/keyboardLayouts'
 
 function App() {
+  const [pressedKeys, setPressedKeys] = useState([])
+
   const handleKeyDown = e => {
     if (e.repeat) return
+
     const key = e.key
     const keyElement = document.querySelector(`[data-key='${keyboardBayan[key]}']`)
+    // add check if key is bound to note
+    setPressedKeys(prevState => [...prevState, keyboardBayan[key]])
 
     playSynth(keyboardBayan[key])
     if (keyElement) {
@@ -33,11 +38,13 @@ function App() {
     }
   })
 
+  const chord = pressedKeys.join(' - ')
+
   return (
     <>
       <div className="App">
         Keyboard Synth
-        <Piano />
+        <Piano chord={chord} />
         <div id="todo">
           <ul>
             <h3>TODO:</h3>
