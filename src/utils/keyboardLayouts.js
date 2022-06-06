@@ -30,7 +30,9 @@ export const bayanLayout = {
   ';': 'E5',
   '/': 'F5',
   '[': 'F#5',
-  "'": 'G5'
+  "'": 'G5',
+  ']': 'A5',
+  '\\': 'C6'
 }
 
 export const pianoLayout = {}

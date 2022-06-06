@@ -3,21 +3,18 @@ import './App.css'
 import Piano from './components/Piano'
 import playSynth from './utils/tone'
 import { bayanLayout } from './utils/keyboardLayouts'
-import { fullKeyboard } from './utils/pianoArray'
+// import { fullKeyboard } from './utils/pianoArray'
 
 function App() {
   const [pressedKeys, setPressedKeys] = useState([])
 
   const handleKeyDown = e => {
     if (e.repeat) return
-
     const key = e.key
     const keyElement = document.querySelector(`[data-key='${bayanLayout[key]}']`)
-
     if (bayanLayout[key]) {
       setPressedKeys(prevState => [...prevState, bayanLayout[key]])
     }
-
     playSynth(bayanLayout[key])
     if (keyElement) {
       keyElement.classList.add('active')
@@ -27,32 +24,28 @@ function App() {
   const handleKeyUp = e => {
     const key = e.key
     const keyElement = document.querySelector(`[data-key='${bayanLayout[key]}']`)
-
     const button = bayanLayout[key]
-    if (pressedKeys.includes(button)) {
-      const index = pressedKeys.indexOf(button)
-      setPressedKeys(prevState => [
-        ...prevState.slice(0, index),
-        ...prevState.slice(index + 1, prevState.length)
-      ])
-    }
-
+    // not sure why it does not work with if
+    // if (pressedKeys.includes(button))
+    setPressedKeys(prev => prev.filter(pressed => pressed !== button))
+    // }
     if (keyElement) {
       keyElement.classList.remove('active')
     }
   }
 
+  // WHY IT TRIGGERS FOR EVERY KEYBOARD EVENT?! (when without [])
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('keyup', handleKeyUp)
+    window.addEventListener('keydown', handleKeyDown, false)
+    window.addEventListener('keyup', handleKeyUp, false)
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
-      window.addEventListener('keyup', handleKeyUp)
+      window.removeEventListener('keyup', handleKeyUp)
     }
-  })
+  }, [])
 
   const chord = pressedKeys
-    .sort((a, b) => fullKeyboard.indexOf(a) - fullKeyboard.indexOf(b))
+    // .sort((a, b) => fullKeyboard.indexOf(a) - fullKeyboard.indexOf(b))
     .join(' - ')
 
   return (
@@ -64,7 +57,7 @@ function App() {
             <h3>TODO:</h3>
             {/* <li>Keyboard range slider</li> */}
             <li>Piano keys layout</li>
-            <li>Chord display</li>
+            {/* <li>Chord display</li> */}
             <li>Temperament selection</li>
             <li>Sustain on key down</li>
             <li>Pedal on Spacebar</li>
@@ -75,7 +68,7 @@ function App() {
           </ul>
           <ul>
             <h3>Known bugs:</h3>
-            <li>Second keydown effect fires for the second key when two keys played legato</li>
+            <li>Latest keydown trigered with every previously pressed key keyup effect</li>
             <li>Mobile select on long tap</li>
           </ul>
         </div>

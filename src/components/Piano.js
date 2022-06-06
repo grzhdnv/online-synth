@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+// import { detect } from '@tonaljs/chord-detect'
 import { Box } from '@mantine/core'
 import { RangeSlider } from '@mantine/core'
 import KeyboardSVG from './KeyboardSVG'
@@ -19,6 +20,7 @@ const Piano = ({ chord }) => {
   // props:
   const startKey = indexWhiteKeyMap[range[0]]
   const endKey = indexWhiteKeyMap[range[1]]
+  // const detectedChord = detect(chord).join(' - ')
 
   return (
     <>
