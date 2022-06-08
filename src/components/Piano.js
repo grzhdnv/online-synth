@@ -5,8 +5,8 @@ import { RangeSlider } from '@mantine/core'
 import KeyboardSVG from './KeyboardSVG'
 import { whiteKeysFull } from '../utils/pianoArray'
 
-const Piano = ({ chord }) => {
-  const [range, setRange] = useState([9, 37])
+const Piano = () => {
+  const [range, setRange] = useState([16, 34])
 
   const indexWhiteKeyMap = { ...whiteKeysFull }
 
@@ -24,10 +24,10 @@ const Piano = ({ chord }) => {
 
   return (
     <>
-      <Box style={{ width: '90%', margin: '20px auto' }}>
+      <Box id="sliderContainer">
         <RangeSlider
-          color="gray"
-          size="sm"
+          color="dark"
+          size="xl"
           min={0}
           max={51}
           minRange={7}
@@ -37,10 +37,18 @@ const Piano = ({ chord }) => {
           onChange={setRange}
           marks={marks}
         />
-        <h1 id="chords">Chord: {chord}</h1>
+        {/*         <h4>
+          Piano range:&nbsp;
+          <em>
+            {fullKeyboard.indexOf(indexWhiteKeyMap[range[1]]) -
+              fullKeyboard.indexOf(indexWhiteKeyMap[range[0]]) +
+              1}
+            &nbsp;keys
+          </em>
+        </h4> */}
+        {/* <h2 id="chords">Chord: {chord}</h2> */}
       </Box>
       <KeyboardSVG startKey={startKey} endKey={endKey} />
-      <div>{startKey + endKey}</div>
     </>
   )
 }

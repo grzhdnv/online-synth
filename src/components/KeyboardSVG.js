@@ -61,8 +61,6 @@ const KeyboardSVG = ({ startKey, endKey }) => {
           />
         ))}
       </svg>
-      {`Piano range: ${pianoKeys.length} keys`}
-      <div></div>
     </div>
   )
 }

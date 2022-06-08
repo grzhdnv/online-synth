@@ -24,8 +24,8 @@ const BlackKey = props => {
       height={props.height}
       x={props.x}
       rx="10"
-      onPointerDown={() => handlePointerDown()}
-      onPointerUp={() => setActive(false)}
+      onTouchStart={() => handlePointerDown()}
+      onTouchEnd={() => setActive(false)}
       onPointerEnter={() => handlePointerEnter()}
       onPointerLeave={() => setActive(false)}
     ></rect>
