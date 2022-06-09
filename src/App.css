@@ -68,3 +68,25 @@ svg {
   stroke: #f5f5f5;
   fill: #171717;
 }
+
+#selectContainer {
+  padding-top: 10px;
+  margin: 0 auto;
+  width: 150px;
+}
+
+label.mantine-Select-label {
+  color: #dddddd;
+}
+
+input.mantine-Select-input {
+  background-color: #e9ecef;
+  color: #25262b;
+}
+
+.mantine-Select-selected {
+  font-style: italic;
+  font-weight: 500;
+  color: #171717;
+  background-color: #d4d4d4;
+}
