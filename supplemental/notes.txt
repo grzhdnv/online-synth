@@ -1,0 +1,19 @@
+        {/* <div id="todo">
+          <ul>
+            <h3>TODO:</h3>
+             <li>Piano keys layout</li>
+            <li>Chord analyzer</li>
+            <li>Temperament selection</li>
+            <li>Sustain on key down</li>
+            <li>Pedal on Spacebar</li>
+            <li>Synth selection</li>
+            <li>Keyboard scroll</li>
+            <li>Shift octave change</li>
+            <li>Notes engraving</li>
+          </ul>
+          <ul>
+            <h3>Known bugs:</h3>
+            <li>Latest keydown trigered with every previously pressed key keyup effect</li>
+            <li>Mobile select on long tap</li>
+          </ul>
+        </div> */}

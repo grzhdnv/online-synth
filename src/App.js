@@ -1,21 +1,39 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
+import { Select } from '@mantine/core'
 import Piano from './components/Piano'
 import playSynth from './utils/tone'
-import { bayanLayout } from './utils/keyboardLayouts'
+import { bayanLayout, pianoLayout, pianoSimple } from './utils/keyboardLayouts'
 // import { fullKeyboard } from './utils/pianoArray'
 
 function App() {
   // const [pressedKeys, setPressedKeys] = useState([])
+  const [value, setValue] = useState('Piano')
+  const [layout, setLayout] = useState(pianoLayout)
+  const [range, setRange] = useState([16, 34])
+
+  const valueToLayout = { Piano: pianoLayout, Bayan: bayanLayout, 'Piano (simple)': pianoSimple }
+
+  const setSelect = e => {
+    setValue(e)
+    setLayout(valueToLayout[e])
+    /*     if (e === 'bayanLayout') {
+      setLayout(() => bayanLayout)
+    } else if (e === 'pianoLayout') {
+      setLayout(pianoLayout)
+    } else if (e === 'pianoSimple') {
+      setLayout(pianoSimple)
+    } */
+  }
 
   const handleKeyDown = e => {
     if (e.repeat) return
     const key = e.key
-    const keyElement = document.querySelector(`[data-key='${bayanLayout[key]}']`)
+    const keyElement = document.querySelector(`[data-key='${layout[key]}']`)
     // if (bayanLayout[key]) {
     //   setPressedKeys(prevState => [...prevState, bayanLayout[key]])
     // }
-    playSynth(bayanLayout[key])
+    playSynth(layout[key])
     if (keyElement) {
       keyElement.classList.add('active')
     }
@@ -23,7 +41,7 @@ function App() {
 
   const handleKeyUp = e => {
     const key = e.key
-    const keyElement = document.querySelector(`[data-key='${bayanLayout[key]}']`)
+    const keyElement = document.querySelector(`[data-key='${layout[key]}']`)
     // const button = bayanLayout[key]
     // not sure why it does not work with if
     // if (pressedKeys.includes(button))
@@ -42,7 +60,7 @@ function App() {
       window.removeEventListener('keydown', handleKeyDown)
       window.removeEventListener('keyup', handleKeyUp)
     }
-  }, [])
+  }, [layout])
 
   /*   const chord = pressedKeys
     .sort((a, b) => fullKeyboard.indexOf(a) - fullKeyboard.indexOf(b))
@@ -51,26 +69,13 @@ function App() {
   return (
     <>
       <div className="App">
-        <Piano />
-        {/* <div id="todo">
-          <ul>
-            <h3>TODO:</h3>
-             <li>Piano keys layout</li>
-            <li>Chord analyzer</li>
-            <li>Temperament selection</li>
-            <li>Sustain on key down</li>
-            <li>Pedal on Spacebar</li>
-            <li>Synth selection</li>
-            <li>Keyboard scroll</li>
-            <li>Shift octave change</li>
-            <li>Notes engraving</li>
-          </ul>
-          <ul>
-            <h3>Known bugs:</h3>
-            <li>Latest keydown trigered with every previously pressed key keyup effect</li>
-            <li>Mobile select on long tap</li>
-          </ul>
-        </div> */}
+        <Piano range={range} />
+        <Select
+          value={value}
+          onChange={e => setSelect(e)}
+          data={['Piano', 'Piano (simple)', 'Bayan']}
+          label="Keyboard layout"
+        />
       </div>
     </>
   )
